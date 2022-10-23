@@ -1,0 +1,75 @@
+{
+  "products": [
+    {
+      "barcode": 1,
+      "name": "Milk",
+      "price": 5.9,
+      "img": "milk.jpg"
+    },
+    {
+      "barcode": 2,
+      "name": "Water",
+      "price": 7.9,
+      "img": "Water.jpg"
+    },
+    {
+      "barcode": 3,
+      "name": "Bread",
+      "price": 6,
+      "img": "Bread.jpg"
+    },
+    {
+      "barcode": 4,
+      "name": "Chocolate",
+      "price": 13.5,
+      "img": "Chocolate.jpg"
+    },
+    {
+      "barcode": 5,
+      "name": "Bamba",
+      "price": 6,
+      "img": "Bamba.jpg"
+    },
+    {
+      "barcode": 6,
+      "name": "Coffee",
+      "price": 9,
+      "img": "Coffee.jpg"
+    },
+    {
+      "barcode": 7,
+      "name": "Cola",
+      "price": 13,
+      "img": "Cola.jpg"
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "desc": "Milk",
+      "price": 5.9,
+      "company": "Tnuva",
+      "category_name": "Dairy",
+      "category_id": "2",
+      "image": "Milk.jpg"
+    },
+    {
+      "id": 6,
+      "desc": "Cola",
+      "price": 13,
+      "company": "Coke",
+      "category_name": "Drinks",
+      "category_id": "5",
+      "image": "Cola.jpg"
+    },
+    {
+      "id": 4,
+      "desc": "Chocolate",
+      "price": 13.5,
+      "company": "Elit",
+      "category_name": "Snacks and cookies",
+      "category_id": "4",
+      "image": "Chocolate.jpg"
+    }
+  ]
+}

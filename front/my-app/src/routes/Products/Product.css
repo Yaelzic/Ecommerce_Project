@@ -1,0 +1,33 @@
+.product .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 10rem
+}
+.product .box{
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  outline: var(--outline);
+  outline-offset: -1rem;
+}
+.product .box:hover{
+  outline-offset: 0;
+  outline: var(--outline-hover);
+}
+.product .box img{
+  height: 15rem;
+  margin: 1rem 0;
+}
+.product .box h3{
+  font-size:2rem;
+  line-height:1.8;
+  color: var(--black);
+}
+.product .box p{
+  color: var(--light-color);
+  list-style: 1.8;
+  font-size: 1.7rem;
+  padding: 1rem 0;
+}

@@ -1,0 +1,24 @@
+.catgory-form {
+  text-align: center;
+  padding: 2rem;
+  background: rgb(255, 255, 255);
+
+}
+.catgory-form h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  color: var(--black);
+}
+.catgory-form .box input {
+  width: 50%;
+  margin: 1rem 0;
+  font-size: 1.6rem;
+  text-transform: none;
+  color: var(--black);
+  padding: 1rem;
+  background: #eee;
+  border-radius: 0.5rem;
+}
+.catgory-form button {
+  background: var(--orange);
+}
