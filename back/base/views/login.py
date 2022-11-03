@@ -10,22 +10,23 @@ from rest_framework.response import Response
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
-        token = super().get_token(user)
-        token['username'] = user.username
-        token['email'] = user.email
-        token['admin'] = user.is_superuser
-        return token
- 
+            print(user)
+            token = super().get_token(user)
+            token['username'] = user.username
+            token['email'] = user.email
+            token['admin'] = user.is_superuser
+            return token
+        
 #login
 class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
 
+    serializer_class = MyTokenObtainPairSerializer
+    
 
 # logout
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def logOut(request):
-    print(request)
     logout(request)
     return Response("success")
 
@@ -33,7 +34,9 @@ def logOut(request):
 # register
 @api_view(['POST'])
 def register(request):
+    if User.objects.filter(username=request.data['username']).exists():
+        return Response("User already exists")
     User.objects.create_user(username=request.data['username'], email=request.data['email'],
-     password=request.data['password'],is_staff=0,is_superuser=True)
-    return Response({"register":"success"} )
+    password=request.data['password'],is_staff=0,is_superuser=False)
+    return Response("")
 

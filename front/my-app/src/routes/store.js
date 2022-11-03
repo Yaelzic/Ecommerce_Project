@@ -3,7 +3,7 @@ import productsReducer from './Products/productSlice';
 import cartReducer from './Header/ShoppingCart/cartSlice';
 import categoryReducer from './Categories/categorySlice'
 import loginReducer from './Login/loginSlice'
-import orderReducer from './Products/orderSlice';
+import orderReducer from './Orders/orderSlice';
 import wisheReducer from './Header/WishList/wishSlice'
 
 export const store = configureStore({

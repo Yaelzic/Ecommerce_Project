@@ -6,7 +6,6 @@ import { Button } from 'react-bootstrap';
 
 const ProductAdmin = () => {
     let params = useParams();
-    let id = params.id;
     const myProds = useSelector(selectProds);
     const dispatch = useDispatch();
     let [searchParams, setSearchParams] = useSearchParams({ replace: true });
@@ -14,8 +13,8 @@ const ProductAdmin = () => {
 
     useEffect(() => {
         if (localStorage.getItem("token"))
-          setmyToken((JSON.parse(localStorage.getItem("token"))).token)
-      }, [])
+            setmyToken((JSON.parse(localStorage.getItem("token"))).token)
+    }, [])
 
     useEffect(() => {
         dispatch(getProductsAsync())
@@ -43,15 +42,15 @@ const ProductAdmin = () => {
                 </thead>
                 <tbody>
                     {myProds.filter((pro) => {
-                            let filter = searchParams.get("filter");
-                            if (!filter) return true;
-                            let name = pro.desc.toLowerCase();
-                            return name.startsWith(filter.toLowerCase());
-                        }).map((prod, index) =>
+                        let filter = searchParams.get("filter");
+                        if (!filter) return true;
+                        let name = pro.desc.toLowerCase();
+                        return name.startsWith(filter.toLowerCase());
+                    }).map((prod, index) =>
                         <tr key={index}>
                             <td>{prod.id}</td>
                             <td>{prod.desc}</td>
-                            <td><Button onClick={() => dispatch(delProductAsync({prod, myToken}))}>Delete</Button></td>
+                            <td><Button onClick={() => dispatch(delProductAsync({ prod, myToken }))}>Delete</Button></td>
                         </tr>)}
                 </tbody>
             </table>

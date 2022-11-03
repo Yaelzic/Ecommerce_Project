@@ -1,0 +1,35 @@
+.orders .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 10rem
+}
+.orders .box{
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  outline: var(--outline);
+  outline-offset: -1rem;
+}
+.orders .box:hover{
+  outline-offset: 0;
+  outline: var(--outline-hover);
+}
+ img{
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+th{
+  font-size: 2rem;
+}
+td{
+  font-size: 1.5rem;
+}
+.box h2{
+  color: var(--orange);
+}
+
+
+

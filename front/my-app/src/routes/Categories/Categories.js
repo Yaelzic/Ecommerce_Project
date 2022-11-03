@@ -1,19 +1,21 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Nav, NavDropdown } from 'react-bootstrap'
-import {selectCategory, getCategoryAsync} from './categorySlice'
-import { useSelector, useDispatch} from 'react-redux';
+import { selectCategory, getCategoryAsync } from './categorySlice'
+import { useSelector, useDispatch } from 'react-redux';
+
+/* Display all categories */
 
 const Categories = (index, category) => {
-    const myCategory = useSelector(selectCategory);
-    const dispatch = useDispatch();
+  const myCategory = useSelector(selectCategory);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(getCategoryAsync())
-    }, [])
+  useEffect(() => {
+    dispatch(getCategoryAsync())
+  }, [])
 
   return (
     <div>
-    {myCategory.map((category) => <NavDropdown.Item key={category.id} href={`/categories/${category.id}`}>{category.desc}</NavDropdown.Item>)}
+      {myCategory.map((category) => <NavDropdown.Item key={category.id} href={`/categories/${category.id}`}>{category.desc}</NavDropdown.Item>)}
     </div>
   )
 }

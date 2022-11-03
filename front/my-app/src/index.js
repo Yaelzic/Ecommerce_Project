@@ -10,8 +10,11 @@ import Register from './routes/Header/UserForm/Register';
 import CategoryAdmin from './routes/Categories/CategoryAdmin'
 import ProductAdmin from './routes/Products/ProductAdmin';
 import { Admin } from './Admin';
-import Orders from './routes/Products/Orders';
+import Orders from './routes/Orders/Orders';
 import UserForm from './routes/Header/UserForm/UserForm';
+import DisplayCart from './routes/Header/ShoppingCart/DisplayCart';
+import CheckOut from './routes/Orders/CheckOut';
+import Home from './Home';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,8 +25,9 @@ root.render(
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/admin" element={<Admin/>}></Route>
-          <Route path="/getOrders" element={<Orders/>}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/getOrders" element={<Orders />}></Route>
           <Route path="/categories" >
             <Route path=":id" element={<Products />} />
           </Route>
@@ -31,8 +35,10 @@ root.render(
           <Route path="/categoryAdmin" element={<CategoryAdmin />}></Route>
           <Route path="/productAdmin" element={<ProductAdmin />}></Route>
           <Route path="/userForm" element={<UserForm />}></Route>
+          <Route path="/displayCart" element={<DisplayCart />}></Route>
+          <Route path="/checkOut" element={<CheckOut />}></Route>
         </Route>
-        
+
       </Routes>
     </Provider>
   </BrowserRouter>

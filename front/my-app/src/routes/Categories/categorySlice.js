@@ -1,32 +1,32 @@
-import {createAsyncThunk,createSlice } from '@reduxjs/toolkit';
-import {fetchCategory, addCategory, delCategory} from './categoryAPI'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchCategory, addCategory, delCategory } from './categoryAPI'
 
 const initialState = {
-  categories:[]
+  categories: []
 };
 
 export const getCategoryAsync = createAsyncThunk(
-    'category/fetchCategory',
-    async () => {
-      const response = await fetchCategory();
-      return response.data;
-    }
-  );
+  'category/fetchCategory',
+  async () => {
+    const response = await fetchCategory();
+    return response.data;
+  }
+);
 
 
-  export const addCategoryAsync = createAsyncThunk(
-    'category/addCategory',
-    async (obj) => {
-        const response = await addCategory(obj.CategoryName,obj.myToken);
-        return response.data;
-    }
+export const addCategoryAsync = createAsyncThunk(
+  'category/addCategory',
+  async (obj) => {
+    const response = await addCategory(obj.CategoryName, obj.myToken);
+    return response.data;
+  }
 );
 
 export const delCategoryAsync = createAsyncThunk(
   'category/delCategory',
   async (obj) => {
-      const response = await delCategory(obj.category.id,obj.myToken);
-      return response.data;
+    const response = await delCategory(obj.category.id, obj.myToken);
+    return response.data;
   }
 );
 
@@ -38,7 +38,7 @@ export const categorySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCategoryAsync.fulfilled, (state, action) => {
-      state.categories = action.payload;
+        state.categories = action.payload;
       })
       .addCase(addCategoryAsync.fulfilled, (state, action) => {
       })

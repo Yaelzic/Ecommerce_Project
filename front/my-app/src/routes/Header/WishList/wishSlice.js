@@ -1,33 +1,33 @@
-import {createAsyncThunk,createSlice } from '@reduxjs/toolkit';
-import {fetchWish,addWish,delWish } from './wishAPI'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchWish, addWish, delWish } from './wishAPI'
 
 const initialState = {
-  lst:[]
+  lst: []
 };
 
 export const getWishAsync = createAsyncThunk(
-    'wishes/fetchWish',
-    async (myToken) => {
-      const response = await fetchWish(myToken);
-      return response.data;
-    }
-  );
+  'wishes/fetchWish',
+  async (myToken) => {
+    const response = await fetchWish(myToken);
+    return response.data;
+  }
+);
 
-  
-  
+
+
 export const addWishAsync = createAsyncThunk(
-    'wishes/addWish',
-    async (obj) => {
-        const response = await addWish(obj.prod.id,(obj.token ? obj.token : obj.token.token));
-        return response.data;
-    }
+  'wishes/addWish',
+  async (obj) => {
+    const response = await addWish(obj.prod.id, (obj.token ? obj.token : obj.token.token));
+    return response.data;
+  }
 );
 
 export const delWishAsync = createAsyncThunk(
   'wishes/delWish',
   async (obj) => {
-      const response = await delWish(obj.prod.id,obj.myToken);
-      return response.data;
+    const response = await delWish(obj.prod.id, obj.myToken);
+    return response.data;
   }
 );
 
@@ -45,9 +45,8 @@ export const wishSlice = createSlice({
       .addCase(addWishAsync.fulfilled, (state, action) => {
         state.lst = [...state.lst, action.payload];
       })
-      .addCase(delWishAsync.fulfilled, (state, action) => { 
+      .addCase(delWishAsync.fulfilled, (state, action) => {
         state.lst = state.lst.filter((x) => x.id !== parseInt(action.payload));
-        console.log(state.lst)
       });
   },
 });

@@ -1,11 +1,11 @@
-import {createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addCart, delCart} from './cartAPI'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { addCart, delCart } from './cartAPI'
 
 const initialState = {
-  cartlst:[]
+  cartlst: []
 };
-export function fetchCart(){
-  if (localStorage.getItem('cart')){
+export function fetchCart() {
+  if (localStorage.getItem('cart')) {
     initialState.cartlst = localStorage.getItem('cart')
   }
   else {
@@ -15,29 +15,29 @@ export function fetchCart(){
 
 
 export const getCartsAsync = createAsyncThunk(
-    'cart/fetchCart',
-    async () => {
-      const response = await fetchCart();
-      return response.data;
-    }
-  );
+  'cart/fetchCart',
+  async () => {
+    const response = await fetchCart();
+    return response.data;
+  }
+);
 
-  export const addCartAsync = createAsyncThunk(
-    "cart/addCart", 
-    async (newProd) => {
+export const addCartAsync = createAsyncThunk(
+  "cart/addCart",
+  async (newProd) => {
     const response = await addCart(newProd);
     console.log(newProd);
     return response;
   });
-   
-  export const delCartAsync = createAsyncThunk(
-    "cart/delCart",
-     async (id) => {
+
+export const delCartAsync = createAsyncThunk(
+  "cart/delCart",
+  async (id) => {
     const response = await delCart(id);
     console.log(id);
     return response;
   });
-  
+
 
 
 export const cartSlice = createSlice({
@@ -48,7 +48,7 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCartsAsync.fulfilled, (state, action) => {
-      state.cartlst = action.payload;
+        state.cartlst = action.payload;
       })
       .addCase(addCartAsync.fulfilled, (state, action) => {
         state.cartlst = [...state.cartlst, action.payload];

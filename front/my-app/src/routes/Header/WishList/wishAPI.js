@@ -6,7 +6,7 @@ const post_url = "http://127.0.0.1:8000/addWish/"
 
 export function fetchWish(myToken) {
     return new Promise((resolve) =>
-        axios(url,{
+        axios(url, {
             headers: {
                 'Authorization': `Bearer ${myToken}`
             }
@@ -14,9 +14,9 @@ export function fetchWish(myToken) {
     );
 }
 
-export function addWish(product,myToken) {
-    return new Promise((resolve) =>    
-        axios.post(post_url,{'product' : product},{
+export function addWish(product, myToken) {
+    return new Promise((resolve) =>
+        axios.post(post_url, { 'product': product }, {
             headers: {
                 'Authorization': `Bearer ${myToken}`
             }
@@ -26,10 +26,10 @@ export function addWish(product,myToken) {
 
 export function delWish(id, myToken) {
     return new Promise((resolve) =>
-      axios.delete(`${url}/${id}`,{
-        headers: {
-            'Authorization': `Bearer ${myToken}`
-        }
-      }).then((res) => resolve({ data: res.data }))
+        axios.delete(`${url}/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${myToken}`
+            }
+        }).then((res) => resolve({ data: res.data }))
     );
-  }
+}

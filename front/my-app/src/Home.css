@@ -1,0 +1,8 @@
+.home i{
+    color: var(--orange);
+    font-size: 7rem;
+}
+.home span{
+    color: rgb(15, 2, 41);
+    font-size: 5rem;
+}

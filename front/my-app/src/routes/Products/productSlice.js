@@ -1,27 +1,27 @@
-import {createAsyncThunk,createSlice } from '@reduxjs/toolkit';
-import {fetchProduct, delProduct} from './productAPI'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchProduct, delProduct } from './productAPI'
 
 const initialState = {
-  lst:[]
+  lst: []
 };
 
 export const getProductsAsync = createAsyncThunk(
-    'products/fetchProduct',
-    async () => {
-      const response = await fetchProduct();
-      return response.data;
-    }
-  );
+  'products/fetchProduct',
+  async () => {
+    const response = await fetchProduct();
+    return response.data;
+  }
+);
 
 
 export const delProductAsync = createAsyncThunk(
-    'products/delProduct',
-    async (obj) => {
-      console.log(obj.prod.id,obj.myToken)
-        const response = await delProduct(obj.prod.id,obj.myToken);
-        return response.data;
-    }
-  );
+  'products/delProduct',
+  async (obj) => {
+    console.log(obj.prod.id, obj.myToken)
+    const response = await delProduct(obj.prod.id, obj.myToken);
+    return response.data;
+  }
+);
 
 
 export const productsSlice = createSlice({
@@ -32,7 +32,7 @@ export const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getProductsAsync.fulfilled, (state, action) => {
-      state.lst = action.payload;
+        state.lst = action.payload;
       });
   },
 });

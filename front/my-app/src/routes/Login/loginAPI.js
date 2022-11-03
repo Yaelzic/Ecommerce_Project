@@ -6,7 +6,8 @@ const URL_LOGOUT = "http://127.0.0.1:8000/logout/"
 
 export function signin(cred) {
     return new Promise((resolve) =>
-    axios.post(URL, cred).then((res) => resolve({ data: res.data }))
+        axios.post(URL, cred).then((res) => resolve({ data: res.data }))
+            .catch((error) => resolve({ data: "error" }))
     );
 }
 
@@ -18,11 +19,11 @@ export function signUp(cred) {
 
 export function logOut(token) {
     return new Promise((resolve) =>
-    axios(URL_LOGOUT, {
-        headers: {
-            'Authorization': `Bearer ${(token.token)}`
-        }
-    }).then((res) => resolve({ data: res.data }))
+        axios(URL_LOGOUT, {
+            headers: {
+                'Authorization': `Bearer ${(token.token)}`
+            }
+        }).then((res) => resolve({ data: res.data }))
     );
 }
 

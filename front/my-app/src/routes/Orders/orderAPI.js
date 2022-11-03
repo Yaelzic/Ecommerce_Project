@@ -7,7 +7,7 @@ const url_post = "http://127.0.0.1:8000/addOrder/"
 
 export function fetchOrders(token) {
     return new Promise((resolve) =>
-        axios(url,{
+        axios(url, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -18,7 +18,7 @@ export function fetchOrders(token) {
 
 export function fetchOrderDet(token) {
     return new Promise((resolve) =>
-        axios(url_det,{
+        axios(url_det, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -27,9 +27,9 @@ export function fetchOrderDet(token) {
 }
 
 
-export function sendOrders(myOrders,token) {
+export function sendOrders(myOrders, token) {
     return new Promise((resolve) =>
-        axios.post(url_post,myOrders,{
+        axios.post(url_post, myOrders, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

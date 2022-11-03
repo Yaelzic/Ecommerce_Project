@@ -7,7 +7,7 @@ const Content = () => {
     <div className="container"  >
       <br></br>
       <br></br>
-      <Outlet />  
+      <Outlet />
     </div>
 
   )

@@ -7,11 +7,9 @@ This is an online supermarket project.
 ---
 ## Functionality:
 
-Django and React ecommerce project. Among other functionality, users can create their account, 
+Django and React ecommerce project. 
+Among other functionality, users can create their account, 
 add items to their cart and purchase them.
-
-![https://i.gyazo.com/a70702d488336c3915cc2a4c3dd3bbd0.png](https://i.gyazo.com/a70702d488336c3915cc2a4c3dd3bbd0.png)
-
 
 ---
 ## Technologies used:
@@ -36,6 +34,8 @@ pip install virtualenv
 
 **Clone or download this repository and open it in your editor of choice. In a terminal (mac/linux) or windows terminal, run the following command in the base directory of this project**
 
+```
+cd back
 ```
 python -m virtualenv myenv
 ```

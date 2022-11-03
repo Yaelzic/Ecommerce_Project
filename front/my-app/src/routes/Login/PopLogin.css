@@ -1,23 +1,21 @@
-.header .user-form {
-  position: absolute;
+.pop-login {
+  position: relative;
   top: 110%;
   right: -110%;
-  width: 35rem;
+ 
   border-radius: 0.5rem;
   text-align: center;
   padding: 2rem;
   background: #fff;
+  right: 2rem;
 
 }
-.header .user-form.active {
-  right: 2rem;
-}
-.header .user-form h3 {
+.pop-login h3 {
   text-transform: uppercase;
   font-size: 2.5rem;
   color: var(--black);
 }
-.header .user-form .box input {
+.pop-login .box input {
     width: 100%;
     margin: 1rem 0;
     font-size: 1.6rem;
@@ -27,18 +25,20 @@
     background: #eee;
     border-radius: 0.5rem;
   }
-.header .user-form p {
+.pop-login p {
   font-size: 1.4rem;
   color: var(--light-color);
 }
-.header .user-form p a {
+.pop-login p a {
   color: var(--orange);
   text-decoration: underline;
+  
 }
-.header .user-form button:hover {
+
+.pop-login button:hover {
   background: var(--orange);
 }
-.header .user-form .err{
+.pop-login .err{
   font-size: 1.4rem;
   color: red;
   font-style: italic;

@@ -1,0 +1,27 @@
+.header .display-cart {
+  position: absolute;
+  top: 110%;
+  right: -110%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 40rem;
+  box-shadow: var(--box-shadow);
+  background: #fff;
+}
+.trash-icon {
+  color: var(--light-color);
+  font-size: 2rem;
+  cursor: pointer;
+
+}
+td {
+  vertical-align: middle;
+}
+.display-cart p {
+  font-size: 1.4rem;
+  color: red;
+  font-style: italic;
+}
+.button{
+  text-align: center ;
+}

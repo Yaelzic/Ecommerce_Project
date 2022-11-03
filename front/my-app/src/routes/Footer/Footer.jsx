@@ -21,15 +21,11 @@ export default function Footer() {
       <div className="box-container">
         <div className="box">
           <h3>
-            groco
+            SHOPI
             <i>
               <FontAwesomeIcon icon={faShoppingBasket} />
             </i>
           </h3>
-          <p>
-            Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Natus,
-            Laudantium?
-          </p>
           <div className="share">
             <a href="/">
               <i>
@@ -61,12 +57,6 @@ export default function Footer() {
             </i>
             +123 456 7890
           </a>
-          <a href="/" className="links">
-            <i>
-              <FontAwesomeIcon icon={faPhone} />
-            </i>
-            +111 222 3333
-          </a>
           <a href="/" className="links" id="emailLink">
             <i>
               <FontAwesomeIcon icon={faEnvelope} />
@@ -77,49 +67,19 @@ export default function Footer() {
             <i>
               <FontAwesomeIcon icon={faMapMarkerAlt} />
             </i>
-            pernambuco, brazil
+            Petah Tikva, Isarel
           </a>
         </div>
         <div className="box">
           <h3>quick info</h3>
-          <a href="#home" className="links">
+          <a href="/" className="links">
             <i>
               <FontAwesomeIcon icon={faArrowRight} />
             </i>
             home
           </a>
-          <a href="#features" className="links">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            features
-          </a>
-          <a href="#products" className="links">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            products
-          </a>
-          <a href="#categories" className="links">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            categories
-          </a>
-          <a href="#reviews" className="links">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            reviews
-          </a>
-          <a href="#blogs" className="links">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            blogs
-          </a>
         </div>
-        <div className="box">
+        {/*<div className="box">
           <h3>newsletter</h3>
           <p>Subscribe For Latest Updates</p>
           <input type="text" placeholder="your email" />
@@ -127,15 +87,14 @@ export default function Footer() {
             subscribe
           </button>
           <img src="image/payment.png" alt="" />
-        </div>
+  </div> */}
       </div>
       <div className="credits">
         <p>
           Created By
           {' '}
-          <span>Mr. Web Designer</span>
+          <span>Yael Zichel</span>
           {' '}
-          | All Rights Reserved
         </p>
       </div>
     </footer>

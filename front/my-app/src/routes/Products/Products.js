@@ -3,9 +3,9 @@ import { selectProds, getProductsAsync } from './productSlice'
 import { useSelector, useDispatch } from 'react-redux';
 import { useSearchParams, useParams } from "react-router-dom";
 import Product from './Product';
-import { sendCart, selectorders, addItem ,removeItem} from './orderSlice'
+import { sendCart, selectorders, addItem, removeItem } from '../Orders/orderSlice'
 
-
+/* Select all products */
 
 const Products = () => {
   let params = useParams();
@@ -23,35 +23,39 @@ const Products = () => {
 
   useEffect(() => { }, [counter])
 
+  /* Add to cart function */
   const addToCart = (item) => {
     let tempTotal = 0;
     setcounter(counter + 1);
     let found = false;
-    let tempOrders = JSON.parse( JSON.stringify(myOrders))
+    let tempOrders = JSON.parse(JSON.stringify(myOrders))
     {
       tempOrders && tempOrders.forEach((element) => {
         if (element.id === item.id) {
           found = true;
-          element.amount += 1; 
+          element.amount += 1;
           dispatch(sendCart(tempOrders))
         }
       });
     }
     if (!found) {
       item.amount = 1;
-      let temp = JSON.parse( JSON.stringify(item))
+      let temp = JSON.parse(JSON.stringify(item))
       dispatch(addItem(temp))
     }
-    { myOrders && myOrders.forEach((element) => {
-      tempTotal += element.amount * element.price;
-    });}
+    {
+      myOrders && myOrders.forEach((element) => {
+        tempTotal += element.amount * element.price;
+      });
+    }
     settotal(tempTotal)
   };
 
+  /* Remove from cart function */
   const removeFromCart = (item) => {
     let found = false;
     setcounter(counter + 1);
-    let tempOrders = JSON.parse( JSON.stringify(myOrders))
+    let tempOrders = JSON.parse(JSON.stringify(myOrders))
     tempOrders.forEach((element) => {
       if (element.id === item.id) {
         found = true;

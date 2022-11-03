@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShoppingBasket,
@@ -16,8 +16,8 @@ import Navbar from './Navbar/Navbar';
 import { Nav } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { selectUserName } from '../Login/loginSlice'
-import {selectorders} from '../Products/orderSlice'
-import {Link } from "react-router-dom";
+import { selectorders } from '../Orders/orderSlice'
+import { Link } from "react-router-dom";
 import WishList from './WishList/WishList';
 
 export default function Header() {
@@ -60,7 +60,7 @@ export default function Header() {
     setActiveUserForm(false);
     setActiveSearch(false);
     setActiveShoppingCart(false);
-    setActiveMenu(false); 
+    setActiveMenu(false);
   };
   const handleUserFormButton = () => {
     setActiveUserForm(!activeUserForm);
@@ -70,14 +70,8 @@ export default function Header() {
     setActiveWishList(false);
   };
   const myOrders = useSelector(selectorders);
-  //const [myToken, setmyToken] = useState('');
   const userName = useSelector(selectUserName);
 
-
- 
-  //useEffect(() => {
-   // setmyToken(JSON.parse(localStorage.getItem("token")))
-  //}, [])
 
   return (
     <header className="header">
@@ -85,19 +79,17 @@ export default function Header() {
         <i>
           <FontAwesomeIcon icon={faShoppingBasket} />
         </i>
-       SHOPI
+        SHOPI
       </Nav.Link>
       <Navbar active={activeMenu} />
       <div className="icons">
         <button type="button" id="menu-btn" onClick={handleMenuButton}>
           <FontAwesomeIcon className="fa-icon" icon={faBars} />
         </button>
-        <button type="button" id="search-btn" onClick={handleSearchButton}>
-          <FontAwesomeIcon className="fa-icon" icon={faSearch} />
-        </button>
+
         <button type="button" id="cart-btn" onClick={handleShoppingCartButton}>
           <FontAwesomeIcon className="fa-icon" icon={faShoppingCart} />
-          <span className='badge badge-warning' id='lblCartCount'> { (myOrders && myOrders.length)} </span>
+          <span className='badge badge-warning' id='lblCartCount'> {(myOrders && myOrders.length)} </span>
         </button>
         <button type="button" id="user-btn" onClick={handleWishListButton}>
           <FontAwesomeIcon className="fa-icon" icon={faHeart} />
@@ -105,15 +97,15 @@ export default function Header() {
         <button type="button" id="user-btn" onClick={handleUserFormButton}>
           <FontAwesomeIcon className="fa-icon" icon={faUser} />
         </button>
-        
+
       </div>
-      
-     
+
+
       <SearchForm active={activeSearch} />
       <ShoppingCart active={activeShoppingCart} />
       <UserForm active={activeUserForm} />
       <WishList active={activeWishList} />
-      <h3>{userName && (<div>Hello <Nav.Link as={Link} to= "/getOrders" >{userName}</Nav.Link></div>)}</h3>
+      <h3>{userName && (<div>Hello <Nav.Link style={{ textDecoration: "underline" }} as={Link} to="/getOrders" >{userName}</Nav.Link></div>)}</h3>
     </header>
   );
 }

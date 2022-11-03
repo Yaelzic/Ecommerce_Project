@@ -4,14 +4,16 @@ import jwt_decode from "jwt-decode";
 
 // State - data (init)
 const initialState = {
-  userName: (JSON.parse(localStorage.getItem("token"))) 
-  ? (JSON.parse(localStorage.getItem("token"))).user : (""),
+  userName: (JSON.parse(localStorage.getItem("token")))
+    ? (JSON.parse(localStorage.getItem("token"))).user : (""),
   email: "",
-  token: (JSON.parse(localStorage.getItem("token"))) 
-  ? (JSON.parse(localStorage.getItem("token"))).token : (""),
+  token: (JSON.parse(localStorage.getItem("token")))
+    ? (JSON.parse(localStorage.getItem("token"))).token : (""),
   logged: false,
-  admin: (JSON.parse(localStorage.getItem("token"))) 
-  ? (JSON.parse(localStorage.getItem("token"))).token : (false)
+  admin: (JSON.parse(localStorage.getItem("token")))
+    ? (JSON.parse(localStorage.getItem("token"))).isAdmin : (false),
+  register: "",
+  loginerr: ""
 };
 
 export const doSigninAsync = createAsyncThunk("login/signin", async (xyz) => {
@@ -27,8 +29,8 @@ export const doSignupAsync = createAsyncThunk("login/signUp", async (cred) => {
 export const doSignOutAsync = createAsyncThunk(
   'login/logOut',
   async (token) => {
-      const response = await logOut(token);
-      return response.data;
+    const response = await logOut(token);
+    return response.data;
   }
 );
 
@@ -40,43 +42,42 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     logout: (state, action) => {
-      state.token =""
+      state.token = ""
       state.logged = false;
-      state.userName= ""
-      state.email=""
+      state.userName = ""
+      state.email = ""
       state.admin = false
       localStorage.removeItem("token");
     },
   },
- 
+
   extraReducers: (builder) => {
     builder
       .addCase(doSigninAsync.fulfilled, (state, action) => {
-        if (action.payload.access) {
-          state.token = action.payload.access;
-          state.logged = true;
-          state.userName = jwt_decode(action.payload.access).username;
-          state.email = jwt_decode(action.payload.access).email;
-          state.admin = jwt_decode(action.payload.access).admin;
-          localStorage.setItem("token", JSON.stringify({token:state.token, user:state.userName, isAdmin:state.admin}));
-        }
+        if (action.payload)
+          if (action.payload == 'error')
+            state.loginerr = action.payload;
+          else {
+            state.loginerr = "";
+            state.token = action.payload.access;
+            state.logged = true;
+            state.userName = jwt_decode(action.payload.access).username;
+            state.email = jwt_decode(action.payload.access).email;
+            state.admin = jwt_decode(action.payload.access).admin;
+            localStorage.setItem("token", JSON.stringify({ token: state.token, user: state.userName, isAdmin: state.admin }));
+          }
       })
       .addCase(doSignupAsync.fulfilled, (state, action) => {
-        if (action.payload.access) {
-          // state.token = action.payload.access
-          // state.logged = true;
-          // state.userName= jwt_decode(action.payload.access).username
-          // state.email=jwt_decode(action.payload.access).eeemail
-          // console.log( state.email)
-        }
+        state.register = action.payload
+
       }).addCase(doSignOutAsync.fulfilled, (state, action) => {
-            state.token =""
-            state.logged = false;
-            state.userName= ""
-            state.email=""
-            state.admin = false
-            localStorage.removeItem("token");
-    });
+        state.token = ""
+        state.logged = false;
+        state.userName = ""
+        state.email = ""
+        state.admin = false
+        localStorage.removeItem("token");
+      });
   },
 });
 
@@ -88,4 +89,6 @@ export const selectEmail = (state) => state.login.email;
 export const selectUserName = (state) => state.login.userName;
 export const selectToken = (state) => state.login.token;
 export const selectAdmin = (state) => state.login.admin;
+export const selectRegister = (state) => state.login.register;
+export const selectLoginErr = (state) => state.login.loginerr;
 export default loginSlice.reducer;

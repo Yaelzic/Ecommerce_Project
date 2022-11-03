@@ -4,8 +4,9 @@ import { sendOrders, fetchOrders, fetchOrderDet } from './orderAPI';
 const initialState = {
     myOrders: (JSON.parse(localStorage.getItem("myCart")))
         ? (JSON.parse(localStorage.getItem("myCart"))) : ([]),
-    finalOrders : [],
-    orderDetails : []
+    finalOrders: [],
+    orderDetails: [],
+
 };
 
 export const sendordersAsync = createAsyncThunk(

@@ -4,7 +4,7 @@
   right: -110%;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: 40rem;
+  width: 50rem;
   box-shadow: var(--box-shadow);
   background: #fff;
 }
@@ -31,6 +31,14 @@
   color: var(--light-color);
   font-size: 1.6rem;
 }
+.header .shopping-cart .total span {
+  color: var(--light-color);
+  font-size: 1.6rem;
+  float: right
+}
+.header .shopping-cart .box .content .total {
+  margin-left: 1rem;
+}
 .header .shopping-cart .box .content .quantity {
   margin-left: 1rem;
 }
@@ -46,4 +54,19 @@
 
 .header .shopping-cart button:hover {
   background: var(--orange);
+}
+.header .shopping-cart p {
+  font-size: 1.4rem;
+  color: red;
+  font-style: italic;
+}
+
+.header .shopping-cart .box .amount  {
+  font-size: 1.5rem;
+  right: 4rem;
+  position: absolute;
+  color: var(--light-color);
+  text-align: center;
+
+  
 }

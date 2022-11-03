@@ -1,33 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './RegisterStyle.css'
-import {
-    MDBBtn,
-    MDBContainer,
-    MDBCard,
-    MDBCardBody,
-    MDBInput,
-    MDBCheckbox
-  }
-  from 'mdb-react-ui-kit';
+import { doSignupAsync, selectRegister } from '../../Login/loginSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { Modal } from 'react-bootstrap';
+import { MDBCheckbox } from 'mdb-react-ui-kit';
+
+/* Register form */
 
 const Register = () => {
+
+  const [newUserName, setNewUserName] = useState("");
+  const [newPwd, setNewPwd] = useState("");
+  const [renewPwd, setReNewPwd] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [terms, setTerms] = useState(false);
+  const dispatch = useDispatch();
+  const register = useSelector(selectRegister);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (newUserName !== '' && newPwd !== '' && newEmail !== '' && renewPwd !== '' && terms) {
+      dispatch(doSignupAsync({ username: newUserName, email: newEmail, password: newPwd }));
+      document.getElementById("refisterForm").reset();
+    }
+  };
+
   return (
-    <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' >
-      <div className='mask gradient-custom-3'></div>
-      <MDBCard className='m-5' style={{maxWidth: '600px'}}>
-        <MDBCardBody className='px-5'>
-          <h2 className="text-uppercase text-center mb-5">Create an account</h2>
-          <MDBInput wrapperClass='mb-4' label='Your Name' size='lg' id='form1' type='text'/>
-          <MDBInput wrapperClass='mb-4' label='Your Email' size='lg' id='form2' type='email'/>
-          <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='form3' type='password'/>
-          <MDBInput wrapperClass='mb-4' label='Repeat your password' size='lg' id='form4' type='password'/>
-          <div className='d-flex flex-row justify-content-center mb-4'>
-            <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree all statements in Terms of service' />
-          </div>
-          <MDBBtn className='mb-4 w-100 gradient-custom-4' size='lg'>Register</MDBBtn>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+    <Modal.Title id="contained-modal-title-vcenter">
+      <form id="refisterForm" className={'register'} onSubmit={submitHandler}>
+        <h3>Create an account</h3>
+        <div className="box">
+          <input id="userreg" placeholder='your name' onChange={(e) => setNewUserName(e.target.value)} required />
+        </div>
+        <div className="box">
+          <input id="email" placeholder='your email' onChange={(e) => setNewEmail(e.target.value)} required />
+        </div>
+        <div className="box">
+          <input id="passwordreg" type="password" placeholder='your password' onChange={(e) => setNewPwd(e.target.value)} required />
+        </div>
+        <div className="box">
+          <input id="repassword" type="password" placeholder='Repeat your password' onChange={(e) => setReNewPwd(e.target.value)} required />
+        </div>
+        <div className='d-flex flex-row justify-content-center mb-4'>
+          <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree all statements in Terms of service' onChange={(e) => setTerms(e.target.value)} required />
+        </div>
+
+        <button className="btn" type='submit'>Register</button>
+        <p>{register}</p>
+      </form>
+    </Modal.Title>
   );
 }
 
