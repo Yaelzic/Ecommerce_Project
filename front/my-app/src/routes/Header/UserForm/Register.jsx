@@ -16,13 +16,16 @@ const Register = () => {
   const [terms, setTerms] = useState(false);
   const dispatch = useDispatch();
   const register = useSelector(selectRegister);
+  const [errorshowd, seterrorshowd] = useState(false)
+  const errorshow = () => { seterrorshowd(!errorshowd) }
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (newUserName !== '' && newPwd !== '' && newEmail !== '' && renewPwd !== '' && terms) {
+    if (newUserName !== '' && newPwd !== '' && newEmail !== '' && renewPwd !== '' && terms && newPwd === renewPwd) {
       dispatch(doSignupAsync({ username: newUserName, email: newEmail, password: newPwd }));
       document.getElementById("refisterForm").reset();
     }
+    else if (newPwd !== renewPwd) errorshow()
   };
 
   return (
@@ -47,6 +50,7 @@ const Register = () => {
 
         <button className="btn" type='submit'>Register</button>
         <p>{register}</p>
+        {errorshowd && <p>Return the password again</p>}
       </form>
     </Modal.Title>
   );
